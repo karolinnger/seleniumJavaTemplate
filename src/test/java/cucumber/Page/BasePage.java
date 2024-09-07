@@ -12,7 +12,6 @@ public class BasePage {
 
     public BasePage(WebDriver driver){
         this.driver = driver;
-        wait = new WebDriverWait(this.driver, 30);
     }
 
     public void waitForElementToBeVisible(By by) {
@@ -20,7 +19,6 @@ public class BasePage {
     }
 
     public void waitForElementToBeVisible(By by, int timeout) {
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         } catch (Exception e) {
@@ -70,14 +68,7 @@ public class BasePage {
         return false;
     }
 
-    public boolean waitForTextToBeNonEmpty(final By by) {
-        (new WebDriverWait(driver, 30)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.findElement(by).getText().length() != 0;
-            }
-        });
-        return false;
-    }
+
 
 
     public void waitForInvisibilityOfElementByText(By by, String text) {
